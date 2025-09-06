@@ -82,7 +82,7 @@ useHead({
         <p> {{ currentBurger?.tags?.map(item => `${item[0]?.toUpperCase()}${[...item.slice(1)].join('')}`).join(', ') }} </p>
       </section>
       <section
-        v-if="currentBurger?.info.allergens_contained_in"
+        v-if="currentBurger?.info.allergens_contained_in?.length"
         class="mt-9"
       >
         <h4

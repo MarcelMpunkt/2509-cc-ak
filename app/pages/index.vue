@@ -6,8 +6,9 @@ const { data } = await useFetch('/api/restaurant', {
     const { offered_burgers } = data
     data.offered_burgers = offered_burgers.filter((burger) => {
       const { info } = burger
-      if (info?.availableSince && info.availableSince < now) return true
-      if (info?.available_until && Date.parse(info.available_until) > now) return true
+      if (info?.availableSince && info.availableSince > now) return false
+      if (info?.available_until && Date.parse(info.available_until) < now) return false
+      return true
     })
     return data
   },
